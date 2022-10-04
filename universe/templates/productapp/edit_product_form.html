@@ -1,0 +1,28 @@
+{% extends "main_page.html" %}
+
+    {% block title %}Edit product{% endblock title %} 
+   
+    {% block body_content %}
+    <!--====== SLIDER PART START ======-->
+    {% load static %}
+    <section id="home" class="slider-area pt-100 mt-5">
+        <div class="container-fluid position-relative">
+            <div class="slider-active">
+                <div class="single-slider">
+                    <div class="slider-bg">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% load bootstrap %}
+                            {{ product_form |bootstrap_horizontal:'col-lg-6'}}
+                                                      
+                            <input class="bc-white mt-2 ml-2 loginbutton" type="submit" value="Update">
+                        </form>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- contact box -->
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== CONTACT PART ENDS ======-->
+
+{% endblock body_content %}

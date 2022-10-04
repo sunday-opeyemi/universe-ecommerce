@@ -1,0 +1,30 @@
+{% extends "main_page.html" %}
+
+    {% block title %}Login{% endblock title %} 
+   
+    {% block body_content %}
+    <!--====== SLIDER PART START ======-->
+    {% load static %}
+    <section id="home" class="slider-area pt-100 mt-5">
+        <div class="container-fluid position-relative">
+            <div class="slider-active">
+                <div class="single-slider">
+                    <div class="slider-bg">
+                        <form method="POST"  >
+                            {% csrf_token %}
+                            {% load bootstrap %}
+                            {{ form |bootstrap_horizontal:'col-lg-6'}}
+                            <input class="bc-white mt-2 ml-2 loginbutton" type="submit" value="Login">
+                        </form>
+                    </div>
+                    <p class="col-md-6 col-lg-6 col-xxl-6 col-sm-12 col-xm-12">
+                        <a href="{% url 'password_reset' %}" class="date text-primary mt-3 ml-1">Reset password</a>
+                    </p>  
+                </div> <!-- row -->
+            </div> <!-- contact box -->
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== CONTACT PART ENDS ======-->
+
+{% endblock body_content %}

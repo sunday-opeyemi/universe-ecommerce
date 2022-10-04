@@ -1,0 +1,29 @@
+{% extends "main_page.html" %}
+
+    {% block title %}payment success{% endblock title %} 
+   
+    {% block body_content %}
+    <!--====== SLIDER PART START ======-->
+    <section id="contact" class="contact-area pt-115 mt-5">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-6">
+                    <div class="contact-title">Thank You</h2>
+                        <p><span class="date text-pink text-size-30px">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {{message}}
+                                {% endfor %}
+                            {% endif %}</span>
+                        </p>
+                    </div> 
+                </div>
+
+            </div> <!-- row -->
+            
+        </div> <!-- container -->
+    </section>
+
+    <!--====== CONTACT PART ENDS ======-->
+
+{% endblock body_content %}

@@ -1,0 +1,35 @@
+{% extends "main_page.html" %}
+
+    {% block title %}Upload product{% endblock title %} 
+   
+    {% block body_content %}
+    <!--====== SLIDER PART START ======-->
+    {% load static %}
+    <section id="home" class="slider-area pt-100 mt-5">
+        <div class="container-fluid position-relative">
+            <div class="slider-active">
+                <div class="single-slider">
+                    <div class="slider-bg">
+                        <h4> Upload product form </h4>
+                        <p><span class="date text-pink text-size-30px mt-5">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {{message}}
+                                {% endfor %}
+                            {% endif %}</span>
+                        </p>
+                        <form method="POST" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                            {% load bootstrap %}
+                            {{ uploadproduct_form |bootstrap_horizontal:'col-lg-6'}}
+                            <input class="bc-white mt-2 ml-2 loginbutton" type="submit" value="Upload">
+                        </form>
+                    </div> 
+                </div> <!-- row -->
+            </div> <!-- contact box -->
+        </div> <!-- container -->
+    </section>
+    
+    <!--====== CONTACT PART ENDS ======-->
+
+{% endblock body_content %}

@@ -1,0 +1,57 @@
+{% extends "main_page.html" %}
+
+    {% block title %}edit cart{% endblock title %} 
+   
+    {% block body_content %}
+    <!--====== SLIDER PART START ======-->
+    {% load static %}
+    {% if product %}
+    {% for prod in product %}
+    <section id="home" class="slider-area pt-100 mt-5">
+        <div class="container-fluid position-relative">
+            <div class="slider-active">   
+                <div class="single-slider">
+                    <div class="slider-bg">
+                        <div class="row no-gutters align-items-center ">
+                            <div class="row no-gutters align-items-center ">
+                            <div class="col-lg-4 col-md-5" style="width:200px; height:300px">
+                                <div class="slider-product-image d-none d-md-block">
+                                    <a href="{% url 'more_product' prod.category %}">
+                                    <span style="color: #0e399c;" class="font-weight-bold">
+                                            {% if prod.product_picture %}
+                                                <img src="{{prod.product_picture.url}}" alt="img" width="200px" height="300px"/>
+                                            {% endif %}
+                                            </span>
+                                    <div class="slider-discount-tag">
+                                        <p>${{prod.price}}</p>
+                                    </div>
+                                    </a>
+                                </div> <!-- slider product image -->
+                            </div>
+                            <div class="col-lg-8 col-md-7">
+                                <div class="slider-product-content">
+                                    <h2 data-animation="fadeInUp" data-delay="0.3s"><span>{{prod.product_name}}</span></h2>
+                                    <h2 data-animation="fadeInUp" data-delay="0.3s"><span>Description</span></h2>
+                                    <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">{{prod.description}}</p>
+                                    
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        {% load bootstrap %}
+                                        {{ product_form |bootstrap_horizontal:'col-lg-6'}}
+
+                                        <input class="bc-white mt-2 ml-2 loginbutton" type="submit" value="Update product">
+                                    </form>
+                                    
+                                </div> <!-- slider product content -->
+                            </div>
+                        </div> <!-- row -->
+                    </div> <!-- container -->
+                </div> <!-- single slider -->
+    </section>
+    {% endfor %}
+    {% endif %}          
+    <!--====== PRODUCT PART START ======-->
+    
+     
+
+{% endblock body_content %}
